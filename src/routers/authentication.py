@@ -9,7 +9,7 @@ from datetime import timedelta
 from fastapi.security import OAuth2PasswordRequestForm
 
 
-router = APIRouter(prefix = "users",tags=["User"])
+router = APIRouter(tags=["User"])
 
 @router.post("/signin", status_code= status.HTTP_200_OK)
 def Sign_in(request :schema.User , db :Session = Depends(get_db)):
@@ -26,9 +26,9 @@ def Sign_in(request :schema.User , db :Session = Depends(get_db)):
 def login(request :OAuth2PasswordRequestForm  = Depends(),db :Session = Depends(get_db) ):
     user = db.query(model.User).filter(model.User.username==request.username).first()
     if not user:
-        raise HTTPException(status_code= status.HTTP_404_NOT_FOUND ,detail="user with this username not exists")
+        raise HTTPException(status_code= status.HTTP_404_NOT_FOUND ,detail="User with this username not exists!")
     if not Hash.verify(request.password,user.password):
-        raise HTTPException(status_code= status.HTTP_401_UNAUTHORIZED ,detail="Wrong password")
+        raise HTTPException(status_code= status.HTTP_401_UNAUTHORIZED ,detail="Wrong password!")
     
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(

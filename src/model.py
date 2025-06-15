@@ -7,7 +7,7 @@ class Ideas(Base):
     __tablename__ = "ideas"
     id = Column(Integer, primary_key=True , index=True)
     content = Column(String)
-    user_id =Column(Integer , ForeignKey('user.id'))
+    user_id =Column(Integer , ForeignKey('users.id'))
     #users beacuse of tablename
 
     thinker = relationship("User",back_populates="ideas")
