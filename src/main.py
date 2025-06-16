@@ -1,12 +1,16 @@
+from dotenv import load_dotenv
+load_dotenv()
+
+
 from fastapi import FastAPI
 from .routers import authentication,ideas
-from dotenv import load_dotenv
+
+
 from . import model
 from .database import engine
 
 app = FastAPI()
 
-load_dotenv()
 model.Base.metadata.create_all(engine)
 
 @app.get("/")

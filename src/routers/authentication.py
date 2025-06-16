@@ -15,7 +15,7 @@ router = APIRouter(tags=["User"])
 def Sign_in(request :schema.User , db :Session = Depends(get_db)):
     #iske aage ka login that password must be 8 didgit woh sab frontent wale karte hai /by using react components
     #creating an model user from request user
-    new_user = model.User(username =request.username , password = Hash.bcrypt(request.password)) 
+    new_user = model.User(username =request.username , password = Hash.bcrypt(request.password), num_ideas = 0) 
     db.add(new_user)
     db.commit()
     db.refresh(new_user)

@@ -13,26 +13,41 @@ class baseUser(BaseModel):
     usid:int
     username: str
     password: str 
+    num_ideas:int
 
 #for server
 class User(BaseModel):
     username: str
     password: str
+    num_ideas:int
 
 #for user
 class showUser(BaseModel):
     username: str
+    num_ideas:int
 
     class Config:
         from_attributes = True
 
-class Ideas(BaseModel):
-    content: str
+class input_Ideas(BaseModel):
+    startup_idea: str
 
 
-class showIdeas(BaseModel):
-    content: str
-    thinker: showUser  # expects relationship in ORM
+#for nested data
+class Evaluation(BaseModel):
+    sentence: str
+    score: int
+
+
+class showIdea(BaseModel):
+    startup_idea: str
+    creativity: Evaluation
+    demand: Evaluation
+    uniqueness: Evaluation
+    scale: Evaluation
+    investment: Evaluation
+    
+    thinker: showUser
 
     class Config:
         from_attributes = True
