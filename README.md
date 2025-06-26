@@ -39,7 +39,7 @@ A scalable, JWT-secured backend built with **FastAPI**, designed to evaluate use
 ### 1. Clone the repo
 
 ```bash
-git clone 
+git clone https://github.com/Asthraris/AI-StartUp-Idea-Validator.git
 cd startup-evaluator-api
 ```
 
