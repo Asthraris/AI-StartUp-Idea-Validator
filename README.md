@@ -14,7 +14,8 @@ A scalable, JWT-secured backend built with **FastAPI**, designed to evaluate use
   * Uniqueness
   * Scalability
   * Investment readiness
-* 🧠 **OpenAI GPT Integration** via `gpt-4o-mini`
+  
+* 🧠 **GEMINI Integration** via `gemini-1.5-flash`
 * 📦 **Database Storage** of evaluated ideas per user
 * 📈 **Scalable Architecture** – future-ready to add premium usage limits or analytics
 * 🗃️ **Usage History** – fetch user-specific past evaluations
@@ -27,8 +28,8 @@ A scalable, JWT-secured backend built with **FastAPI**, designed to evaluate use
 
 * **Framework**: FastAPI (with APIRouter modular structure)
 * **Auth**: JWT via OAuth2 with token-based flow
-* **Database**: SQLAlchemy ORM + PostgreSQL / SQLite
-* **AI API**: OpenAI GPT via `openai` Python SDK
+* **Database**: SQLAlchemy ORM +  SQLite
+* **AI API**: Google gemini v1.5-flash via `google-genai` Python SDK
 * **Env Management**: `python-dotenv`
 * **Schema Validation**: Pydantic
 
@@ -52,7 +53,7 @@ pip install -r requirements.txt
 ### 3. Setup `.env`
 
 ```env
-OPENAI_KEY=sk-xxxxxxxxxxxxxxxxxx
+GOOGLE_API_KEY = "YOUR KEY"
 SECRET_KEY=your_jwt_secret
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=60
@@ -95,17 +96,28 @@ uvicorn app.main:app
 
 ```json
 {
-  "startup_idea": "AI-powered mental health assistant for teens",
+  "startup_idea": "An local LLM used coding repo visualizer",
   "evaluation": {
     "creativity": {
-      "sentence": "Unique blend of AI and mental wellness tools.",
-      "score": 8
+      "sentence": "The concept of using a local LLM to visualize coding repositories is novel and offers a unique approach to code understanding.",
+      "score": 7
     },
     "demand": {
-      "sentence": "High demand due to rising teen mental health issues.",
-      "score": 9
+      "sentence": "Demand exists among developers for tools improving code comprehension and collaboration, but market saturation in code visualization tools needs consideration.",
+      "score": 6
     },
-    ...
+    "uniqueness": {
+      "sentence": "The combination of local LLM processing and repository visualization is relatively unique, offering potential advantages in privacy and speed.",
+      "score": 7
+    },
+    "scale": {
+      "sentence": "Scaling could be challenging due to the computational resources required for local LLM processing, limiting potential user base.",
+      "score": 5
+    },
+    "investment": {
+      "sentence": "Investment potential is moderate, contingent on demonstrating a clear value proposition over existing solutions and achieving scalability.",
+      "score": 6
+    }
   }
 }
 ```
