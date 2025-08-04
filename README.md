@@ -1,6 +1,6 @@
-# 🚀 Startup Idea Evaluator API
+# 🚀 Startup Idea Evaluator 
 
-A scalable, JWT-secured backend built with **FastAPI**, designed to evaluate user-submitted startup ideas using **OpenAI's GPT API**. It allows authenticated users to submit ideas and receive structured AI feedback scored across five categories. Ideal for product validation, ideation tools, or investor pitch pre-analysis.
+A scalable, JWT-secured backend built with **FastAPI**, designed to evaluate user-submitted startup ideas using **Gemini API**. It allows authenticated users to submit ideas and receive structured AI feedback scored across five categories. Ideal for product validation, ideation tools, or investor pitch pre-analysis.
 
 ---
 
@@ -65,16 +65,22 @@ ACCESS_TOKEN_EXPIRE_MINUTES=60
 uvicorn app.main:app 
 ```
 
+### 5. Run the Client 
+
+```bash
+streamlit run UI.py
+```
+
 ---
 
 ## 📑 API Routes Overview
 
 ### 🔐 Auth Routes
 
-| Method | Route          | Description         |
-| ------ | -------------- | ------------------- |
-| POST   | `/auth/signup` | Register new user   |
-| POST   | `/auth/login`  | Login and get token |
+| Method | Route     | Description         |
+| ------ | ----------| ------------------- |
+| POST   | `/signup` | Register new user   |
+| POST   | `/login`  | Login and get token |
 
 > Each route returns a **JWT token** to be used in Authorization header:
 > `Authorization: Bearer <token>`
@@ -124,26 +130,6 @@ uvicorn app.main:app
 
 ---
 
-## 🔐 JWT Auth Flow
-
-* After login/signup, you get a token.
-* Include it in your request headers:
-
-```http
-Authorization: Bearer <your_token>
-```
-
----
-
-## 📡 Scalable Usage Control (Pluggable)
-
-The system is structured to support **per-user usage limits** (e.g., 3 free evaluations). This logic can be extended to support:
-
-* Tiered API access
-* Premium unlocks
-* Billing integration
-
----
 
 ## 📦 Future Roadmap
 
@@ -151,18 +137,10 @@ The system is structured to support **per-user usage limits** (e.g., 3 free eval
 * [ ] Admin dashboard with analytics
 * [ ] User-defined evaluation criteria
 * [ ] Support for team-based accounts
-* [ ] Export results as PDF/CSV
-* [ ] Frontend integration (Next.js/Flutter/React)
+
 
 ---
 
 ## 🪪 License
 
 MIT – free to use and extend.
-
----
-
-## 👨‍💻 Author
-
-**Aman Gupta**
-*Inspired by innovation, powered by AI.*
