@@ -26,6 +26,7 @@ A scalable, JWT-secured backend built with **FastAPI**, designed to evaluate use
 
 ## 🔧 Tech Stack
 
+* **Frontend**: Streamlit
 * **Framework**: FastAPI (with APIRouter modular structure)
 * **Auth**: JWT via OAuth2 with token-based flow
 * **Database**: SQLAlchemy ORM +  SQLite
