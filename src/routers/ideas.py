@@ -125,7 +125,7 @@ def publish_idea(
     db.commit()
     db.refresh(new_idea)
 
-    return json_data
+    return new_idea
 
 
 @router.get(
